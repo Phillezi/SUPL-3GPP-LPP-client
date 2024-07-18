@@ -393,7 +393,7 @@ static SPARTN_CONSTEXPR const char* GAL_CODE_BIAS_TYPES[3] = {
     "C7Q",
 };
 
-static char const* bias_type_name(long gnss_id, bool is_phase, uint8_t type) {
+SPARTN_UNUSED static char const* bias_type_name(long gnss_id, bool is_phase, uint8_t type) {
     if (gnss_id == GNSS_ID__gnss_id_gps) {
         if (is_phase) {
             if (type < 4) return GPS_PHASE_BIAS_TYPES[type];

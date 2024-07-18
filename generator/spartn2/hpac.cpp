@@ -292,7 +292,7 @@ static void troposphere_data_block(MessageBuilder&                       builder
 #ifdef SPARTN_DEBUG_PRINT
         printf("  sf042: %d [default]\n", sf042_default);
 #endif
-        uint8_t value =
+        SPARTN_UNUSED uint8_t value =
             sf042_default < 0 ? 0 : (sf042_default > 7 ? 7 : static_cast<uint8_t>(sf042_default));
         builder.sf042_raw(sf042_default);
     }

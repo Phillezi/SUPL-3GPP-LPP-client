@@ -409,7 +409,7 @@ lpp_PLI_CIE_ext2(location_information::LocationInformation const& location) {
 
 static CommonIEsProvideLocationInformation_t* lpp_PLI_CommonIEsProvideLocationInformation(
     location_information::LocationInformation const* location,
-    location_information::HaGnssMetrics const*       metrics
+    UNUSED location_information::HaGnssMetrics const*       metrics
 ) {
     auto CIE_PLI = ALLOC_ZERO(CommonIEsProvideLocationInformation_t);
 

@@ -40,9 +40,10 @@ void BitString::initialize(size_t bits) {
 
 BitString::Index BitString::bit_index(ssize_t index) const {
     auto bit = static_cast<size_t>(index);
+    size_t bits_unused_size_t = static_cast<size_t>(bits_unused);
     assert(index >= 0);
-    assert(bit < size * 8 - bits_unused);
-    bit += bits_unused;
+    assert(bit < size * 8 - bits_unused_size_t);
+    bit += bits_unused_size_t;
 
     auto byte       = bit / 8;
     auto byte_index = size - 1 - byte;
@@ -71,14 +72,15 @@ bool BitString::get_bit(ssize_t index) const {
 void BitString::set_integer(size_t begin, size_t length, size_t value) {
     for (size_t i = 0; i < length; i++) {
         auto index = begin + i;
-        if (value & (1 << i)) set_bit(index);
+        if (value & (1 << i)) set_bit(static_cast<ssize_t>(index));
     }
 }
 
 int64_t BitString::as_int64() const {
     uint64_t value = 0;
-    for (size_t i = 0; i < size * 8 - bits_unused; i++) {
-        auto   bit       = get_bit(i);
+    size_t bits_unused_size_t = static_cast<size_t>(bits_unused);
+    for (size_t i = 0; i < size * 8 - bits_unused_size_t; i++) {
+        auto   bit       = get_bit(static_cast<ssize_t>(i));
         size_t bit_value = bit ? 1 : 0;
         value |= (bit_value << i);
     }
